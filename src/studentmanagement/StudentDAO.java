@@ -161,17 +161,17 @@ public class StudentDAO {
             }
 
             if (rows > 0) {
-                conn.commit();   // all 4 steps succeeded -> make it permanent
+                conn.commit();
                 System.out.println("Student and all related records deleted successfully!");
             } else {
-                conn.rollback();  // no such student -> undo everything (nothing to undo here, but safe practice)
+                conn.rollback();
                 System.out.println("No student found with that ID.");
             }
 
         } catch (SQLException e) {
             System.out.println("Error deleting student. Rolling back all changes...");
             try {
-                if (conn != null) conn.rollback();   // ANY step failed -> undo all 4 steps, nothing gets half-deleted
+                if (conn != null) conn.rollback();
             } catch (SQLException ex) {
                 System.out.println("Rollback failed: " + ex.getMessage());
             }
@@ -180,7 +180,7 @@ public class StudentDAO {
         } finally {
             try {
                 if (conn != null) {
-                    conn.setAutoCommit(true);  // reset to normal mode
+                    conn.setAutoCommit(true);
                     conn.close();
                 }
             } catch (SQLException e) {

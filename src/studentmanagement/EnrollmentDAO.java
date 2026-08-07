@@ -145,7 +145,6 @@ public class EnrollmentDAO {
         }
     }
 
-    // Uses JOIN to show readable enrollment info instead of raw IDs
     public static void viewEnrollments() {
         String sql = """
             SELECT e.enrollment_id, s.name AS student_name, c.course_name, e.enrollment_date
