@@ -43,6 +43,7 @@ public class AppointmentDAO {
     }
 
     public static void viewAppointments() {
+
         String sql = """
             SELECT a.appointment_id, p.name AS patient_name, d.name AS doctor_name,
                    d.specialization, a.appointment_date, a.appointment_time, a.status
@@ -51,6 +52,7 @@ public class AppointmentDAO {
             JOIN doctors d ON a.doctor_id = d.doctor_id
             ORDER BY a.appointment_date, a.appointment_time
             """;
+
         try (Connection conn = DBConnection.getConnection();
              PreparedStatement ps = conn.prepareStatement(sql);
              ResultSet rs = ps.executeQuery()) {

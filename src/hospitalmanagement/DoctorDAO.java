@@ -42,6 +42,7 @@ public class DoctorDAO {
 
     public static void viewDoctors() {
         String sql = "SELECT * FROM doctors";
+
         try (Connection conn = DBConnection.getConnection();
              PreparedStatement ps = conn.prepareStatement(sql);
              ResultSet rs = ps.executeQuery()) {
@@ -79,7 +80,7 @@ public class DoctorDAO {
 
             int chosenId;
             do {
-                System.out.print("Multiple matches. Enter correct doctor_id: ");
+                System.out.print("Multiple matches.Enter correct doctor_id: ");
                 String idInput = sc.nextLine();
                 chosenId = Validator.isPositiveInteger(idInput) ? Integer.parseInt(idInput) : -1;
                 if (!ids.contains(chosenId)) System.out.println("Invalid selection!");
