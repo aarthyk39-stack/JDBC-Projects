@@ -140,8 +140,7 @@ public class EnrollmentDAO {
             }
 
         } catch (SQLException e) {
-            // duplicate enrollment will fail here due to UNIQUE(student_id, course_id)
-            System.out.println("Error enrolling student: " + e.getMessage());
+            System.out.println(" Error enrolling student: " + e.getMessage());
         }
     }
 
